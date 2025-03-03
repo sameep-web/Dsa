@@ -5,16 +5,27 @@ struct node
     int data;
     struct node *next;
 };
-struct node *insertatfirst(struct node *head, int data)
-{
 
-    node *ptr = new node;
-    ptr->data = data;
-    ptr->next = head;
-    return head;
+void traversal(struct node *ptr)
+{
+    int index = 0;
+    cout << "ELEMENTS OF LINKED LIST ARE AS FOLLOWING : " << endl;
+    while (ptr != NULL)
+    {
+        cout << "ELEMENTS " << index << " : " << ptr->data << endl;
+        ptr = ptr->next;
+        index++;
+    }
 }
 
-struct node *insertatmiddle(struct node *head, int index, int data)
+struct node *insertatfirst(struct node *head, int data)
+{
+    node *ptr = new node;
+    ptr->next = head;
+    ptr->data = data;
+    return ptr;
+}
+struct node *insertatindex(struct node *head, int data, int index)
 {
     node *ptr = new node;
     struct node *p = head;
@@ -29,18 +40,19 @@ struct node *insertatmiddle(struct node *head, int index, int data)
     p->next = ptr;
     return head;
 }
+
 struct node *insertatend(struct node *head, int data)
 {
     node *ptr = new node;
+    ptr->data = data;
     struct node *p = head;
 
     while (p->next != NULL)
     {
         p = p->next;
     }
-    ptr->data = data;
-    ptr->next = NULL;
     p->next = ptr;
+    ptr->next = NULL;
     return head;
 }
 
@@ -48,32 +60,24 @@ struct node *insertafterindex(struct node *prevnode, struct node *head, int data
 {
     if (prevnode == NULL)
     {
-        cout << "Prev node cannot be null" << endl;
+        cout<<"PRevious node cannot be null"<<endl;
         return head;
     }
+    
     node *ptr = new node;
     ptr->data = data;
+
     ptr->next = prevnode->next;
     prevnode->next = ptr;
+
     return head;
-}
-void traversal(struct node *ptr)
-{
-    int index = 0;
-    while (ptr != NULL)
-    {
-        cout << "ELEMENTS " << index << " : " << ptr->data << endl;
-        ptr = ptr->next;
-        index++;
-    }
+    
 }
 int main()
 {
-    cout<<"THE ELEMENTS OF LINKED LIST ARE AS FOLLOWING : "<<endl;
     node *head = new node();
     node *second = new node();
     node *third = new node();
-    node *fourth = new node();
 
     head->data = 10;
     head->next = second;
@@ -82,34 +86,33 @@ int main()
     second->next = third;
 
     third->data = 30;
-    third->next = fourth;
-
-    fourth-> data = 40;
-    fourth-> next = NULL;
+    third->next = NULL;
 
     traversal(head);
 
     cout << endl;
 
-    cout<<"Insert at first: "<<endl;
-    head = insertatfirst(head , 100);
+    cout << "INSERT AT BEGGINGING: " << endl;
+    // insertatfirst(head, 54);
+    head = insertatfirst(head, 54);
     traversal(head);
-    cout<<endl;
+    cout << endl;
 
-    cout<<"Insert at middle: "<<endl;
-    head = insertatmiddle(head , 2 , 200);
+    cout << "INSERT AT INDEX: " << endl;
+    // insertatindex(head, 56,1);
+    head = insertatindex(head, 56, 1);
     traversal(head);
-    cout<<endl;
+    cout << endl;
 
-    cout<<"Insert at end: "<<endl;
-    head = insertatend(head , 500);
-    traversal(head);
-    cout<<endl;
+    cout << "INSERT AT THE END : " << endl;
 
-    cout<<"Insert between element: "<<endl;
-    head = insertafterindex(second,head,400);
+    head = insertatend(head, 12);
     traversal(head);
-    cout<<endl;
+    cout << endl;
+
+    cout << "INSERT AFTER A NODE: " << endl;
+    head = insertafterindex(second, head, 35);
+    traversal(head);
 
     return 0;
 }
