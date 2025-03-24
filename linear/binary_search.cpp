@@ -15,7 +15,7 @@ using namespace std;
 int binarysearch(int arr[], int size, int target)
 {
     int low, mid, high;
-     low = 0;
+    low = 0;
     high = size - 1;
     while (low <= high)
     {
@@ -39,10 +39,10 @@ int binarysearch(int arr[], int size, int target)
 
 int main()
 {
-    //linear search
-    // int arr[] = {1, 2, 3, 54, 22, 5};
-    // int size = sizeof(arr) / sizeof(arr[0]);
-    // int target;
+    // linear search
+    //  int arr[] = {1, 2, 3, 54, 22, 5};
+    //  int size = sizeof(arr) / sizeof(arr[0]);
+    //  int target;
 
     // cout << "Enter the number you want to search in array: ";
     // cin >> target;
@@ -56,16 +56,16 @@ int main()
     // {
     //     cout << "Element was not present in given array! ";
     // }
-//binary search:
-int arr[] = {10,20,30,40,50};
-int size = sizeof(arr)/sizeof(arr[0]);
-int target;
+    // binary search:
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target;
 
-cout << "Enter the number you want to search in array : ";
-cin >> target;
-int result = binarysearch(arr, size, target);
+    cout << "Enter the number you want to search in array : ";
+    cin >> target;
+    int result = binarysearch(arr, size, target);
 
-if (result != -1)
+    if (result != -1)
     {
         cout << "Elements was found at indedx : " << result << endl;
     }

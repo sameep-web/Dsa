@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 struct node
 {
     int data;
@@ -8,33 +7,42 @@ struct node
     struct node *prev;
 };
 
-void traversal(struct node *ptr)
+void Forward_traversal(struct node *ptr)
 {
+    cout << "ELEMENTS OF LINKED LIST IN FORWARD DIRECTION ARE AS FOLLOWING:" << endl;
+    int index = 0;
+    node *head = new node;
     while (ptr != NULL)
     {
-        cout << "ELEMENTS " << ptr->data << endl;
+
+        cout << " NEXT ELEMENT " << index << " : " << ptr->data << endl;
+
         ptr = ptr->next;
+
+        index++;
     }
 }
-void back_traversal(struct node *ptr)
+void Backward_traversal(struct node *ptr)
 {
     node *head = new node;
-    cout << "ELEMENTS OF LINKED LIST IN BACKWARD DIRECTION" << endl;
-    int index = 0;
+    cout << "ELEMENTS OF LINKED LIST IN BACKWARD DIRECTION ARE AS FOLLOWING:" << endl;
+    int ind = 0;
+
     while (ptr->next != NULL)
     {
         ptr = ptr->next;
     }
-
     while (ptr != NULL)
     {
-        cout << "ELEMENTS " << ptr->data << endl;
+
+        cout << "ELEMENTS " << ind << " : " << ptr->data << endl;
         ptr = ptr->prev;
-        index++;
+        ind++;
     }
 }
 
 int main()
+
 {
 
     node *head = new node;
@@ -63,10 +71,9 @@ int main()
     five->data = 50;
     five->next = NULL;
 
-    traversal(head);
-
+    Forward_traversal(head);
     cout << endl;
 
-    back_traversal(head);
+    Backward_traversal(head);
     return 0;
 }

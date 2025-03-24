@@ -35,18 +35,42 @@ void push(struct stack *ptr, int value)
         ptr->arr[ptr->top] = value;
     }
 }
-int pop(struct stack * ptr ){
+int pop(struct stack *ptr)
+{
 
     if (isempty(ptr))
     {
-        cout<<"Stack is underflow"<<endl;
+        cout << "Stack is underflow" << endl;
         return -1;
     }
-    else{
+    else
+    {
         int val = ptr->arr[ptr->top];
         ptr->top--;
         return val;
     }
+}
+int peek(struct stack *sp, int i)
+{
+    int index = sp->top - (i - 1);
+    if (index < 0)
+    {
+        cout << "Invalid position " << endl;
+        return -1;
+    }
+
+    else
+    {
+        return sp->arr[index];
+    }
+}
+int top(struct stack *sp)
+{
+    return sp->arr[sp->top];
+}
+int bottom(struct stack *sp)
+{
+    return sp->arr[0];
 }
 
 int main()
@@ -67,7 +91,18 @@ int main()
 
     cout << "After pushing , full : " << isfull(spointer) << endl;
     cout << "After pushing , empty : " << isempty(spointer) << endl;
-    cout << "Popped " << pop(spointer) << " from the stack" << endl;
+    // cout << "poped " << pop(spointer) <<  " from the stack" << endl;
 
+    // for (int j = 1; j <= spointer->top + 1; j++)
+    // {
+    //     cout << "The value at index " << j << " is " << peek(spointer, j) << endl;
+    // }
+
+    cout << "The top most element of stack is " << top(spointer) << endl;
+    ;
+    cout << "The bottom most element of stack is " << bottom(spointer) << endl;
+    ;
+
+    cout<<"THE element at 0 index is "<<peek(spointer , 0);
     return 0;
 }
